@@ -1,0 +1,65 @@
+{
+	"processInfo": {
+		"is_main_process": false,
+		"process_path": "cw_查询平台_01_登录.json",
+		"process_name": "cw_查询平台_01_登录",
+		"process_id": "子流程ZaLvr3LfKn",
+		"create_at": "2022-10-21 08:41:17",
+		"update_at": "2022-10-21 08:41:17",
+		"isShow": true,
+		"arch": "Windows",
+		"env": "common",
+		"designer_version": "2.0.19",
+		"executor_version": ""
+	},
+	"global_vars": [],
+	"graphData": {
+		"nodes": [
+			{
+				"id": "process_start3082981197029",
+				"component_id": "process_start",
+				"version": "2.1.0",
+				"module_category": "common",
+				"module": "ProcessStart",
+				"module_path": "code.index",
+				"name": "流程开始",
+				"description": "流程开始",
+				"language": "python",
+				"ui_type": "start_view",
+				"dependencies": {},
+				"properties": [
+					{
+						"type": "base_params",
+						"name": "基本",
+						"params": [
+							{
+								"id": "show_name",
+								"grade": "senior",
+								"name": "显示名称",
+								"panel_text": "流程开始执行",
+								"show": true,
+								"show_type": "text",
+								"value_type": "String",
+								"value": "\"流程开始\"",
+								"length": 32,
+								"required": true,
+								"tips": "流程开始组件名称"
+							}
+						]
+					}
+				],
+				"annotation": "",
+				"scope": "scope",
+				"left": 110,
+				"top": 60,
+				"right_endpoint": "bf_endpoint_process_start3082981197029rt",
+				"left_endpoint": "bf_endpoint_process_start3082981197029lf",
+				"top_endpoint": "bf_endpoint_process_start3082981197029tp",
+				"bottom_endpoint": "bf_endpoint_process_start3082981197029bm"
+			}
+		],
+		"edges": [],
+		"groups": []
+	},
+	"blocks": []
+}

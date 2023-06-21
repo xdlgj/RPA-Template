@@ -1,0 +1,417 @@
+{
+	"processInfo": {
+		"is_main_process": false,
+		"process_path": "cw_e_05_子流程输出.json",
+		"process_name": "cw_e_05_子流程输出",
+		"process_id": "子流程INE3rSKYDL",
+		"create_at": "2022-10-30 15:21:54",
+		"update_at": "2022-10-30 15:21:54",
+		"isShow": true,
+		"arch": "Windows",
+		"env": "common",
+		"designer_version": "2.0.19",
+		"executor_version": ""
+	},
+	"global_vars": [
+		{
+			"id": "EjqhJZW8SS",
+			"key": "out_test",
+			"description": "",
+			"value": "\"123\""
+		}
+	],
+	"graphData": {
+		"nodes": [
+			{
+				"id": "script_python_execute9049375873335",
+				"version": "2.1.0",
+				"module_category": "common",
+				"module": "ScriptPythonExecute",
+				"module_path": "code.index",
+				"name": "执行python脚本",
+				"description": "执行python脚本",
+				"language": "python",
+				"ui_type": "param_view",
+				"dependencies": {},
+				"properties": [
+					{
+						"type": "base_params",
+						"name": "基本",
+						"params": [
+							{
+								"id": "show_name",
+								"grade": "senior",
+								"name": "显示名称",
+								"panel_text": "执行python脚本",
+								"show": true,
+								"show_type": "text",
+								"value_type": "String",
+								"value": "\"输出子流程\"",
+								"length": 32,
+								"required": true,
+								"tips": "显示名称，组件面板显示标题"
+							},
+							{
+								"id": "continue_on_error",
+								"grade": "senior",
+								"name": "错误执行",
+								"show": true,
+								"show_type": "singleSelect",
+								"value_type": "String",
+								"value": "\"False\"",
+								"required": true,
+								"tips": "组件运行错误时，是否继续执行",
+								"options": [
+									{
+										"label": "是",
+										"value": "\"True\""
+									},
+									{
+										"label": "否",
+										"value": "\"False\""
+									}
+								]
+							},
+							{
+								"id": "before_delay",
+								"grade": "senior",
+								"name": "活动前延迟时间(毫秒)",
+								"show": true,
+								"show_type": "text",
+								"value_type": "int",
+								"value": "300",
+								"length": 8,
+								"required": true,
+								"tips": "活动前延迟时间(毫秒)，默认延迟300毫秒"
+							},
+							{
+								"id": "after_delay",
+								"grade": "senior",
+								"name": "活动后延迟时间(毫秒)",
+								"show": true,
+								"show_type": "text",
+								"value_type": "int",
+								"value": "300",
+								"length": 8,
+								"required": true,
+								"tips": "活动后延迟时间(毫秒)，默认延迟300毫秒"
+							},
+							{
+								"id": "asyn",
+								"grade": "senior",
+								"name": "异步",
+								"show": false,
+								"show_type": "singleSelect",
+								"value_type": "String",
+								"value": "\"False\"",
+								"required": true,
+								"tips": "组件运行是否异步运行",
+								"options": [
+									{
+										"label": "是",
+										"value": "\"True\""
+									},
+									{
+										"label": "否",
+										"value": "\"False\""
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "input_params",
+						"name": "输入",
+						"params": [
+							{
+								"id": "python_env",
+								"grade": "senior",
+								"name": "执行环境",
+								"placeholder": "",
+								"show": true,
+								"show_type": "singleSelect",
+								"value_type": "String",
+								"value": "\"inner_python\"",
+								"required": true,
+								"options": [
+									{
+										"label": "内置",
+										"value": "\"inner_python\""
+									},
+									{
+										"label": "本地python",
+										"value": "\"native_python\""
+									},
+									{
+										"label": "本地python3",
+										"value": "\"native_python_three\""
+									}
+								],
+								"tips": "选择要执行脚本的环境，默认是内置，代表使用内置python，可选择本地环境python代表执行命令python，python3代表执行命令python3"
+							},
+							{
+								"id": "python_script",
+								"grade": "basic",
+								"name": "脚本",
+								"placeholder": "",
+								"show": true,
+								"show_type": "pythonEditor",
+								"value_type": "immutable",
+								"value": "if '_cw' not in g:\n  g['_cw']={}\n\ng['_cw'][in_name]={}\nfor k in list(l):\n    if k.startswith('out_') or k.startswith('inout_') :\n        g['_cw'][in_name][k]=l[k]",
+								"required": true,
+								"tips": "编写的python可执行脚本，例如：\n脚本定义：\ndef add(a,b):\n    return a+b\n\nc=add(param1,param2)\n入参定义：param1=1,param2=2\n出参定义：c=my_result，这样就可以得到my_result变量的值为3"
+							},
+							{
+								"id": "python_input_variables",
+								"grade": "basic",
+								"name": "入参定义",
+								"placeholder": "",
+								"show": true,
+								"show_type": "dict",
+								"value_type": "dict",
+								"value": {
+									"in_name": "'test'",
+									"l": "locals()",
+									"g": "globals()"
+								},
+								"required": false,
+								"tips": "代码执行时输入的参数，以key-value的形式填写，key是脚本里面的变量，value是值"
+							}
+						]
+					},
+					{
+						"type": "output_params",
+						"name": "输出",
+						"params": [
+							{
+								"id": "_script_execute_result",
+								"grade": "basic",
+								"name": "出参定义",
+								"show": true,
+								"show_type": "dict",
+								"value_type": "dict",
+								"value": {},
+								"required": false,
+								"tips": "代码执行时输出的参数，以key-value的形式填写,key为脚本中的参数，value为设计器定义的接收变量"
+							}
+						]
+					}
+				],
+				"component_id": "script_python_execute",
+				"annotation": "请拷贝此组件使用",
+				"scope": "scope",
+				"left": 86,
+				"top": 149,
+				"right_endpoint": "bf_endpoint_script_python_execute9049375873335rt",
+				"left_endpoint": "bf_endpoint_script_python_execute9049375873335lf",
+				"top_endpoint": "bf_endpoint_script_python_execute9049375873335tp",
+				"bottom_endpoint": "bf_endpoint_script_python_execute9049375873335bm"
+			},
+			{
+				"id": "process_start5756955457429",
+				"component_id": "process_start",
+				"version": "2.1.0",
+				"module_category": "common",
+				"module": "ProcessStart",
+				"module_path": "code.index",
+				"name": "流程开始",
+				"description": "流程开始",
+				"language": "python",
+				"ui_type": "start_view",
+				"dependencies": {},
+				"properties": [
+					{
+						"type": "base_params",
+						"name": "基本",
+						"params": [
+							{
+								"id": "show_name",
+								"grade": "senior",
+								"name": "显示名称",
+								"panel_text": "流程开始执行",
+								"show": true,
+								"show_type": "text",
+								"value_type": "String",
+								"value": "\"流程开始\"",
+								"length": 32,
+								"required": true,
+								"tips": "流程开始组件名称"
+							}
+						]
+					}
+				],
+				"annotation": "",
+				"scope": "scope",
+				"left": 110,
+				"top": 60,
+				"right_endpoint": "bf_endpoint_process_start5756955457429rt",
+				"left_endpoint": "bf_endpoint_process_start5756955457429lf",
+				"top_endpoint": "bf_endpoint_process_start5756955457429tp",
+				"bottom_endpoint": "bf_endpoint_process_start5756955457429bm"
+			},
+			{
+				"id": "log_console6470390814458",
+				"version": "2.1.0",
+				"module_category": "common",
+				"module": "LogConsole",
+				"module_path": "code.index",
+				"name": "打印信息",
+				"description": "打印信息组件",
+				"language": "python",
+				"ui_type": "param_view",
+				"dependencies": {},
+				"properties": [
+					{
+						"type": "base_params",
+						"name": "基本",
+						"params": [
+							{
+								"id": "show_name",
+								"grade": "senior",
+								"name": "显示名称",
+								"panel_text": "打印调试信息",
+								"show": true,
+								"show_type": "text",
+								"value_type": "String",
+								"value": "\"打印信息\"",
+								"length": 32,
+								"required": true,
+								"tips": "显示名称，组件面板显示标题"
+							},
+							{
+								"id": "continue_on_error",
+								"grade": "senior",
+								"name": "错误执行",
+								"show": true,
+								"show_type": "singleSelect",
+								"value_type": "String",
+								"value": "\"False\"",
+								"required": true,
+								"tips": "组件运行错误时，是否继续执行",
+								"options": [
+									{
+										"label": "是",
+										"value": "\"True\""
+									},
+									{
+										"label": "否",
+										"value": "\"False\""
+									}
+								]
+							},
+							{
+								"id": "before_delay",
+								"grade": "senior",
+								"name": "活动前延迟时间(毫秒)",
+								"show": true,
+								"show_type": "text",
+								"value_type": "int",
+								"value": "0",
+								"length": 8,
+								"required": true,
+								"tips": "活动前延迟时间(毫秒)，默认延迟300毫秒"
+							},
+							{
+								"id": "after_delay",
+								"grade": "senior",
+								"name": "活动后延迟时间(毫秒)",
+								"show": true,
+								"show_type": "text",
+								"value_type": "int",
+								"value": "0",
+								"length": 8,
+								"required": true,
+								"tips": "活动后延迟时间(毫秒)，默认延迟300毫秒"
+							},
+							{
+								"id": "asyn",
+								"grade": "senior",
+								"name": "异步",
+								"show": false,
+								"show_type": "singleSelect",
+								"value_type": "String",
+								"value": "\"False\"",
+								"required": true,
+								"tips": "组件运行是否异步运行",
+								"options": [
+									{
+										"label": "是",
+										"value": "\"True\""
+									},
+									{
+										"label": "否",
+										"value": "\"False\""
+									}
+								]
+							}
+						]
+					},
+					{
+						"type": "input_params",
+						"name": "输入",
+						"params": [
+							{
+								"id": "print_text",
+								"grade": "basic",
+								"name": "日志信息",
+								"placeholder": "",
+								"show": true,
+								"show_type": "bigText",
+								"value_type": "String",
+								"value": "_cw['test']",
+								"required": true,
+								"tips": "需要打印的日志信息，可以填字符串（字符串需要用英文双引号括住），也可以填变量名称，也可以变量+字符串，格式如：my_name+\", hello\""
+							}
+						]
+					},
+					{
+						"type": "output_params",
+						"name": "输出",
+						"params": [
+							{
+								"id": "print_result",
+								"grade": "senior",
+								"name": "输出结果",
+								"show": false,
+								"show_type": "bigText",
+								"value_type": "String",
+								"value": "",
+								"required": false,
+								"tips": "日志处理结果"
+							}
+						]
+					}
+				],
+				"component_id": "log_console",
+				"annotation": "",
+				"scope": "scope",
+				"left": 77.66666412353516,
+				"top": 247,
+				"right_endpoint": "bf_endpoint_log_console6470390814458rt",
+				"left_endpoint": "bf_endpoint_log_console6470390814458lf",
+				"top_endpoint": "bf_endpoint_log_console6470390814458tp",
+				"bottom_endpoint": "bf_endpoint_log_console6470390814458bm"
+			}
+		],
+		"edges": [
+			{
+				"sourceNode": "script_python_execute9049375873335",
+				"targetNode": "log_console6470390814458",
+				"source": "bf_endpoint_script_python_execute9049375873335bm",
+				"target": "bf_endpoint_log_console6470390814458tp",
+				"shapeType": "AdvancedBezier",
+				"id": "script_python_execute9049375873335.bf_endpoint_script_python_execute9049375873335bm-log_console6470390814458.bf_endpoint_log_console6470390814458tp"
+			},
+			{
+				"sourceNode": "process_start5756955457429",
+				"targetNode": "script_python_execute9049375873335",
+				"source": "bf_endpoint_process_start5756955457429bm",
+				"target": "bf_endpoint_script_python_execute9049375873335tp",
+				"shapeType": "AdvancedBezier",
+				"id": "process_start5756955457429.bf_endpoint_process_start5756955457429bm-script_python_execute9049375873335.bf_endpoint_script_python_execute9049375873335tp"
+			}
+		],
+		"groups": []
+	},
+	"blocks": []
+}
